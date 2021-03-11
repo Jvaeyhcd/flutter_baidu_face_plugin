@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
 
-    <wang.jvaeyhcd.flutter_baidu_face_plugin.ui.widget.FaceDetectRoundView
+    <com.example.flutter_bdface_plugin.ui.widget.FaceDetectRoundView
         android:id="@+id/liveness_face_round"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
