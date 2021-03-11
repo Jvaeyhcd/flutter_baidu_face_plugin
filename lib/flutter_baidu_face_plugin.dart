@@ -11,7 +11,7 @@ class FlutterBaiduFacePlugin {
     return version;
   }
 
-  Future<String> getBatteryLevel() async {
+  static Future<String> getBatteryLevel() async {
     String batterLevel = 'Unknown battery level.';
     final int result = await _channel.invokeMethod('getBatteryLevel');
     batterLevel = 'Battery level at $result %.';
@@ -19,25 +19,33 @@ class FlutterBaiduFacePlugin {
   }
 
   /// 初始化iOS的License
-  Future initIOSSDK(String licenceId) async {
+  static Future initIOSSDK(String licenseID) async {
     var arguments = Map();
-    arguments['licenseId'] = licenceId;
+    arguments['licenseID'] = licenseID;
     _channel.invokeMethod('initIOSSDK', arguments);
   }
 
+  /// 初始化Android的License
+  static Future initAndroidSDK(String licenseID, String licenseFileName) async {
+    var arguments = Map();
+    arguments['licenseID'] = licenseID;
+    arguments['licenseFileName'] = licenseFileName;
+    _channel.invokeMethod('initBaiduFaceSDK', arguments);
+  }
+
   /// 活体检测
-  Future<LivenessResult> liveness({language = 'zh'}) async {
+  static Future<LivenessResult> livenessFace({language = 'zh'}) async {
     var arguments = Map();
     arguments['language'] = language;
-    final Map<dynamic, dynamic> map = await _channel.invokeMethod('liveness', arguments);
+    final Map<dynamic, dynamic> map = await _channel.invokeMethod('livenessFace', arguments);
     return map != null ? new LivenessResult.fromMap(map) : null;
   }
 
   /// 采集人脸
-  Future<DetectResult> detect({language = 'zh'}) async {
+  static Future<DetectResult> detectFace({language = 'zh'}) async {
     var arguments = Map();
     arguments['language'] = language;
-    final Map<dynamic, dynamic> map = await _channel.invokeMethod('detect', arguments);
+    final Map<dynamic, dynamic> map = await _channel.invokeMethod('detectFace', arguments);
     return map != null ? new DetectResult.fromMap(map) : null;
   }
 }

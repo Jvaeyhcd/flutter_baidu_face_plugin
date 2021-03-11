@@ -18,8 +18,7 @@ import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import wang.jvaeyhcd.flutter_baidu_face_plugin.ui.R;
-
+import wang.jvaeyhcd.flutter_baidu_face_plugin.R;
 
 /**
  * Created by v_liujialu01 on 2018/12/3.

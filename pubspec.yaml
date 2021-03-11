@@ -1,8 +1,7 @@
 name: flutter_baidu_face_plugin
 description: A baidu face Flutter plugin.
 version: 0.0.1
-author:
-homepage:
+homepage: https://github.com/Jvaeyhcd/flutter_baidu_face_plugin
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

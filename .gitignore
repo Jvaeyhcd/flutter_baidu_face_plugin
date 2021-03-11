@@ -8,5 +8,5 @@ build/
 
 pubspec.lock
 .idea/
-
+.metadata
 example/build/

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -20,6 +22,15 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    initBaiduFaceSDK();
+  }
+
+  Future<void> initBaiduFaceSDK() async {
+    if (Platform.isAndroid) {
+      await FlutterBaiduFacePlugin.initAndroidSDK("licenseID", "licenseFileName");
+    } else if (Platform.isIOS) {
+      await FlutterBaiduFacePlugin.initIOSSDK("licenseID");
+    }
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
@@ -50,12 +61,9 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Column(
-            children: [
-              Text('Running on: $_platformVersion\n'),
-              FlatButton(onPressed: () {}, child: Text('采集人脸')),
-            ],
-          ),
+          child: RaisedButton(onPressed: () {
+            FlutterBaiduFacePlugin.detectFace();
+          }, child: Text('采集人脸')),
         ),
       ),
     );
